@@ -1,0 +1,51 @@
+@model webapp.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Logowanie";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Logowanie</h2>
+                
+                <form asp-action="Login" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Username" class="form-label"></label>
+                        <input asp-for="Username" class="form-control" placeholder="Wprowadź nazwę użytkownika" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" placeholder="Wprowadź hasło" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input asp-for="RememberMe" class="form-check-input" />
+                        <label asp-for="RememberMe" class="form-check-label"></label>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Zaloguj się</button>
+                    </div>
+                </form>
+                
+                <hr class="my-4" />
+                
+                <div class="text-center">
+                    <p class="text-muted small">Nie masz konta? <a href="#">Zarejestruj się</a></p>
+                    <p class="text-muted small"><a href="#">Zapomniałeś hasła?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
